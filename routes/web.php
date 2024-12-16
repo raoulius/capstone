@@ -27,6 +27,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\PersetujuanProposal\KomisiController;
 use App\Http\Controllers\PersetujuanProposal\BadanAnggaranController;
 use App\Http\Controllers\PersetujuanProposal\SekjenController;
+use App\Http\Controllers\Admin\BuatRapatController;
 
 use App\Models\AktivitasSenat;
 use App\Models\JDIH;
@@ -119,7 +120,7 @@ Route::group([
     Route::get('jdih/edit/{id}', [JDIHAdminCtrl::class, 'edit'])->name('jdih.edit');
     Route::put('jdih/update/{id}', [JDIHAdminCtrl::class, 'update'])->name('jdih.update');
     Route::get('jdih/delete/{id}', [JDIHAdminCtrl::class, 'delete'])->name('jdih.delete');
-    Route::delete('jdih/delete-file/{id}', 'JDIHController@deleteFile')->name('jdih.delete_file');
+
 
     Route::resource('rooms', RoomAdminController::class);
     Route::resource('room-schedules', RoomScheduleAdminController::class);
@@ -152,15 +153,13 @@ Route::group([
     Route::put('/faq/{faq}', [FaqController::class, 'update'])->name('faq.update');
     Route::delete('/faq/{faq}', [FaqController::class, 'destroy'])->name('faq.destroy');
 
-    Route::get('/buatrapat', function () {
-        return view('cms.buatrapat.index'); // Mengarahkan ke view yang sesuai
-    })->name('rapat.index');
-
-    Route::get('/buatrapat/create', function () {
-        return view('cms.buatrapat.create');
-    })->name('buatrapat.create');
-
     
+
+Route::get('/buatrapat', [BuatRapatController::class, 'index'])->name('buatrapat.index');
+Route::get('/buatrapat/create', [BuatRapatController::class, 'create'])->name('buatrapat.create');
+Route::post('/buatrapat/store', [BuatRapatController::class, 'store'])->name('buatrapat.store');
+
+
     
 
     

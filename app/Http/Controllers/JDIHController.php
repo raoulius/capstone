@@ -21,6 +21,7 @@ class JDIHController extends Controller
             return response_error(null, $e->getMessage(), $e->getCode());
         }
     }
+
     public function jenis($id)
     {
         try {
@@ -36,12 +37,10 @@ class JDIHController extends Controller
             return response_error(null, $e->getMessage(), $e->getCode());
         }
     }
-   // JDIHAdminCtrl.php
 
-public function showJDIH($id)
-{
-    $jdihRecord = JDIH::findOrFail($id);
-    return view('detailJDIH', compact('jdihRecord'));
-}
-
+    public function showJDIH($id)
+    {
+        $jdihRecord = JDIH::findOrFail($id);
+        return view('detailJDIH', compact('jdihRecord'));
+    }
 }

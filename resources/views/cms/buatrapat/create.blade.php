@@ -1,12 +1,14 @@
 @extends("cms.layouts.layout")
 
 @section("content")
-  <link href="{{ URL::asset("cms/buatrapat/createrapat.css") }}" rel="stylesheet">
+<link href="{{ URL::asset('cms/buatrapat/createrapat.css') }}" rel="stylesheet">
 
-  <body>
-        <h1>Create Rapat records</h1>
-        <h2>Silakan isi formulir di bawah ini sebelum memulai rapat</h2>
-        
+<body>
+    <h1>Create Rapat records</h1>
+    <h2>Silakan isi formulir di bawah ini sebelum memulai rapat</h2>
+
+    <form action="{{ route('admin.buatrapat.store') }}" method="POST">
+        @csrf <!-- Laravel's CSRF protection -->
         <div class="meeting-group">
             <label for="nama">Nama:</label>
             <input type="text" id="nama" name="nama" required>
@@ -23,18 +25,18 @@
         </div>
 
         <div class="meeting-group">
-            <label for="waktu">Waktu Mulai Rapat</label>
-            <input type="time" id="waktu" name="waktu" required>
+            <label for="waktu_mulai">Waktu Mulai Rapat:</label>
+            <input type="time" id="waktu_mulai" name="waktu_mulai" required>
         </div>
 
         <div class="meeting-group">
-            <label for="waktu">Waktu Selesai Rapat:</label>
-            <input type="time" id="waktu" name="waktu" required>
+            <label for="waktu_selesai">Waktu Selesai Rapat:</label>
+            <input type="time" id="waktu_selesai" name="waktu_selesai" required>
         </div>
 
         <div class="meeting-group">
-            <label for="email">Jenis Rapat:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="jenis_rapat">Jenis Rapat:</label>
+            <input type="text" id="jenis_rapat" name="jenis_rapat" required>
         </div>
 
         <div class="meeting-group">
@@ -46,9 +48,6 @@
             <button type="submit">Kirim</button>
             <button type="reset">Reset</button>
         </div>
-    </div>
+    </form>
 </body>
 @endsection
-
-
-
