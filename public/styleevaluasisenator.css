@@ -1,0 +1,88 @@
+body {
+    font-family: "Poppins", sans-serif;
+        margin: 0;
+    padding: 0;
+    background-color: #f3f3e5;
+  }
+  
+  .container {
+    width: 65%;
+    margin: 30px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background-color: #cfb53b;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+  }
+  
+  th {
+    background-color: #cbb989;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  td {
+    background-color: #cbb989;
+    color: white;
+    font-weight: bold;
+  }
+  
+  td.green {
+    background-color: #8cbf5c;
+    color: white;
+  }
+  
+  .heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #5c3828;
+  }
+
+  section .header {
+    color: #cfb53b;
+    margin-bottom: 4rem;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 4rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.sub-header {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    color: #18181b;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+}
+  
+
+thead th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #cbb989;
+    cursor: pointer;
+    text-transform: capitalize;
+    text-align: center;
+    z-index: 100;
+    border-radius: 5px;
+}
+
+tbody tr td, tbody tr td p, tbody tr td img {
+    transition: .2s ease-in-out;
+    background-color: #cbb989;
+    border-radius: 5px;
+}

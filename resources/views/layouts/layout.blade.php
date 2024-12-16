@@ -98,6 +98,10 @@
                 <i class='bx bx-time nav2__icon'></i>
                 <span class="nav2__name">Peminjaman Ruangan</span>
               </a>
+              <a class="nav2__link" href="{{ url("/peminjamanruangan") }}">
+                <i class='bx bx-time nav2__icon'></i>
+                <span class="nav2__name">Evaluasi Senator</span>
+              </a>
               <a class="nav2__link" href="{{ url("/login") }}">
                 <i class='bx bx-time nav2__icon'></i>
                 <span class="nav2__name">Ajukan Surat</span>
@@ -137,6 +141,8 @@
           </div>
         </li>
         <li class="link" id="link6"><a href="{{ url("/peminjamanruangan") }}">Peminjaman Ruangan</a></li>
+      </ul>
+      <li class="link" id="link7"><a href="{{ url("/evaluasisenator") }}">Evaluasi Senator</a></li>
       </ul>
 
       <a href="{{ url("/login") }}"><button class="btn btn-ajukansurat" type="button">Ajukan Surat</button></a>
