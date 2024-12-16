@@ -65,6 +65,11 @@ Route::post('/aspirasi', [AspirasiController::class, 'createAspirasi'])->name('a
 
 Route::get('/peminjamanruangan', [RuanganController::class, 'index']);
 
+Route::get('/evaluasisenator', function () {
+    return view('evaluasisenator');
+});
+
+
 Route::get('/selayangpandang', function () {
     return view('selayangpandang');
 });
@@ -146,6 +151,20 @@ Route::group([
     Route::get('/faq/{faq}/edit', [FaqController::class, 'edit'])->name('faq.edit');
     Route::put('/faq/{faq}', [FaqController::class, 'update'])->name('faq.update');
     Route::delete('/faq/{faq}', [FaqController::class, 'destroy'])->name('faq.destroy');
+
+    Route::get('/buatrapat', function () {
+        return view('cms.buatrapat.index'); // Mengarahkan ke view yang sesuai
+    })->name('rapat.index');
+
+    Route::get('/buatrapat/create', function () {
+        return view('cms.buatrapat.create');
+    })->name('buatrapat.create');
+
+    
+    
+
+    
+
 });
 
 // ======================== END CMS ==================================
@@ -174,6 +193,10 @@ Route::group([
     Route::get('/list-revisi/{proposalId}', [KomisiController::class, 'listRevisi'])->name('proposal.revisi');
     Route::get('/revisi/create/{proposalId}', [KomisiController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [KomisiController::class, 'createRevisi'])->name('revisi.store');
+
+    Route::get('/rapat', function () {
+        return view('komisi.agenda-komisi.rapat');
+    })->name('komisi.agenda.rapat');
 });
 // ======================== END KOMISi I==================================
 // ======================== KOMISI II==================================
