@@ -7,6 +7,16 @@
     <h1>Create Rapat records</h1>
     <h2>Silakan isi formulir di bawah ini sebelum memulai rapat</h2>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <div id="resetAlert" class="alert alert-warning" style="display: none;">
+        Form berhasil direset!
+    </div>
+    
     <form action="{{ route('admin.buatrapat.store') }}" method="POST">
         @csrf <!-- Laravel's CSRF protection -->
         <div class="meeting-group">
@@ -50,4 +60,5 @@
         </div>
     </form>
 </body>
+<script src="{{ asset('cms/buatrapat/js-buatrapat.js') }}"></script>
 @endsection
