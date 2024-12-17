@@ -56,7 +56,7 @@
 
         <div class="button-grid">
             <button type="submit">Kirim</button>
-            <button type="reset">Reset</button>
+            <button type="reset" onclick="showResetMessage()" id="resetBtn">Reset</button>
         </div>
     </form>
 </body>
