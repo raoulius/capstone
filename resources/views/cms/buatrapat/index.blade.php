@@ -9,18 +9,17 @@
                 <h2>Komisi</h2>
                 <div class="button-grid" id="komisi-list">
                     <button class="btn"><a href="{{ route("admin.buatrapat.create") }}">Komisi 1</a></button>
-                    <button onclick="startMeeting('Komisi 2')">Komisi 2</button>
-                    <button onclick="startMeeting('Komisi 3')">Komisi 3</button>
-                    <button onclick="startMeeting('Komisi 4')">Komisi 4</button>
-                </div>
+                    <button class="btn"><a href="{{ route("admin.buatrapat.create") }}">Komisi 2</a></button>
+                    <button class="btn"><a href="{{ route("admin.buatrapat.create") }}">Komisi 3</a></button>
+                    <button class="btn"><a href="{{ route("admin.buatrapat.create") }}">Komisi 4</a></button>                    
             </div>
             <div class="meeting-group">
                 <h2>Badan Kepengurusan</h2>
                 <div class="button-grid" id="badan-list">
-                    <button onclick="startMeeting('badan Legislatif')">Badan Legislatif</button>
-                    <button onclick="startMeeting('Badan Kehormatan 2')">Badan Kehormatan</button>
-                    <button onclick="startMeeting('BKSAP')">BKSAP</button>
-                    <button onclick="startMeeting('Badan Anggaran')">Badan Anggaran</button>
+                    <button class="btn"><a href="{{ route("admin.buatrapat.create") }}">Badan Legislasi</a></button>
+                    <button class="btn"><a href="{{ route("admin.buatrapat.create") }}">Badan Anggaran</a></button>
+                    <button class="btn"><a href="{{ route("admin.buatrapat.create") }}">Badan Kehormatan</a></button>
+                    <button class="btn"><a href="{{ route("admin.buatrapat.create") }}">BKSAP</a></button>
                 </div>
             </div>
         </div>
