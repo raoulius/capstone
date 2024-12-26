@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BadanAnggaranRapat;
-
+use App\Models\MasterRapat;
 class BadanAnggaranRapatController extends Controller
 {
     /**
@@ -51,6 +51,18 @@ class BadanAnggaranRapatController extends Controller
 
         // Save the Rapat record to the database
         $badan_anggaran_rapat->save();
+
+        MasterRapat::create([
+            'nama' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'tanggal' => $request->input('tanggal'),
+            'waktu_mulai' => $request->input('waktu_mulai'),
+            'waktu_selesai' => $request->input('waktu_selesai'),
+            'jenis_rapat' => $request->input('jenis_rapat'),
+            'agenda' => $request->input('agenda'),
+            'komisi_type' => 'Badan Anggaran',
+            'original_id' => $badan_anggaran_rapat->id
+        ]);
 
         // Redirect to a success page or back to the form with a success message
         return redirect()->route('admin.buatrapat.badananggarancreate')->with('success', 'Rapat berhasil dibuat!');

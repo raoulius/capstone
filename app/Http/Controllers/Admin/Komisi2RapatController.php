@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Komisi2Rapat;
+use App\Models\MasterRapat;
 
     class Komisi2RapatController extends Controller
 {
@@ -51,6 +52,18 @@ use App\Models\Komisi2Rapat;
 
         // Save the Rapat record to the database
         $komisi2_rapat->save();
+
+        MasterRapat::create([
+            'nama' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'tanggal' => $request->input('tanggal'),
+            'waktu_mulai' => $request->input('waktu_mulai'),
+            'waktu_selesai' => $request->input('waktu_selesai'),
+            'jenis_rapat' => $request->input('jenis_rapat'),
+            'agenda' => $request->input('agenda'),
+            'komisi_type' => 'Komisi 2',
+            'original_id' => $komisi2_rapat->id
+        ]);
 
         // Redirect to a success page or back to the form with a success message
         return redirect()->route('admin.buatrapat.komisi2create')->with('success', 'Rapat berhasil dibuat!');
