@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\BuatRapat; // Assuming you have a Rapat model for this
+use App\Models\BadanKehormatanRapat;
 use App\Models\MasterRapat;
 
-    class BuatRapatController extends Controller
+class BadanKehormatanRapatController extends Controller
 {
     /**
      * Show the index page for Rapat.
@@ -16,13 +16,12 @@ use App\Models\MasterRapat;
     {
         return view('cms.buatrapat.index');
     }
-
     /**
      * Show the form for creating a new Rapat.
      */
     public function create()
     {
-        return view('cms.buatrapat.create');
+        return view('cms.buatrapat.badankehormatan');
     }
 
     /**
@@ -42,17 +41,17 @@ use App\Models\MasterRapat;
         ]);
 
         // Create a new Rapat record
-        $rapat = new BuatRapat();
-        $rapat->nama = $request->input('nama');
-        $rapat->email = $request->input('email');
-        $rapat->tanggal = $request->input('tanggal');
-        $rapat->waktu_mulai = $request->input('waktu_mulai');
-        $rapat->waktu_selesai = $request->input('waktu_selesai');
-        $rapat->jenis_rapat = $request->input('jenis_rapat');
-        $rapat->agenda = $request->input('agenda');
+        $badan_kehormatan_rapat = new BadanKehormatanRapat();
+        $badan_kehormatan_rapat ->nama = $request->input('nama');
+        $badan_kehormatan_rapat ->email = $request->input('email');
+        $badan_kehormatan_rapat ->tanggal = $request->input('tanggal');
+        $badan_kehormatan_rapat ->waktu_mulai = $request->input('waktu_mulai');
+        $badan_kehormatan_rapat ->waktu_selesai = $request->input('waktu_selesai');
+        $badan_kehormatan_rapat ->jenis_rapat = $request->input('jenis_rapat');
+        $badan_kehormatan_rapat ->agenda = $request->input('agenda');
 
         // Save the Rapat record to the database
-        $rapat->save();
+        $badan_kehormatan_rapat ->save();
 
         MasterRapat::create([
             'nama' => $request->input('nama'),
@@ -62,11 +61,11 @@ use App\Models\MasterRapat;
             'waktu_selesai' => $request->input('waktu_selesai'),
             'jenis_rapat' => $request->input('jenis_rapat'),
             'agenda' => $request->input('agenda'),
-            'komisi_type' => 'Komisi 1',
-            'original_id' => $rapat->id
+            'komisi_type' => 'Badan Kehormatan',
+            'original_id' => $badan_kehormatan_rapat->id
         ]);
 
         // Redirect to a success page or back to the form with a success message
-        return redirect()->route('admin.buatrapat.create')->with('success', 'Rapat berhasil dibuat!');
+        return redirect()->route('admin.buatrapat.badankehormatancreate')->with('success', 'Rapat berhasil dibuat!');
     }
 }   

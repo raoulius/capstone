@@ -5,7 +5,7 @@
 
 <body>
     <h1>Create Rapat records</h1>
-    <h3>Komisi 1</h3>
+    <h3>Badan Legislasi</h3>
     <h2>Silakan isi formulir di bawah ini sebelum memulai rapat</h2>
 
     @if(session('success'))
@@ -18,7 +18,7 @@
         Form berhasil direset!
     </div>
     
-    <form action="{{ route('admin.buatrapat.store') }}" method="POST">
+    <form action="{{ route('admin.buatrapat.badanlegislasistore') }}" method="POST">
         @csrf <!-- Laravel's CSRF protection -->
         <div class="meeting-group">
             <label for="nama">Nama:</label>

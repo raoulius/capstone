@@ -28,6 +28,14 @@ use App\Http\Controllers\PersetujuanProposal\KomisiController;
 use App\Http\Controllers\PersetujuanProposal\BadanAnggaranController;
 use App\Http\Controllers\PersetujuanProposal\SekjenController;
 use App\Http\Controllers\Admin\BuatRapatController;
+use App\Http\Controllers\Admin\Komisi2RapatController;
+use App\Http\Controllers\Admin\Komisi3RapatController;
+use App\Http\Controllers\Admin\Komisi4RapatController;
+use App\Http\Controllers\Admin\BadanLegislasiRapatController;
+use App\Http\Controllers\Admin\BadanAnggaranRapatController;
+use App\Http\Controllers\Admin\BadanKehormatanRapatController;
+use App\Http\Controllers\Admin\BKSAPRapatController;
+
 
 use App\Models\AktivitasSenat;
 use App\Models\JDIH;
@@ -154,10 +162,23 @@ Route::group([
     Route::delete('/faq/{faq}', [FaqController::class, 'destroy'])->name('faq.destroy');
 
     
-
-Route::get('/buatrapat', [BuatRapatController::class, 'index'])->name('buatrapat.index');
-Route::get('/buatrapat/create', [BuatRapatController::class, 'create'])->name('buatrapat.create');
-Route::post('/buatrapat/store', [BuatRapatController::class, 'store'])->name('buatrapat.store');
+    Route::get('/buatrapat', [BuatRapatController::class, 'index'])->name('buatrapat.index');
+    Route::get('/buatrapat/create', [BuatRapatController::class, 'create'])->name('buatrapat.create');
+    Route::post('/buatrapat/store', [BuatRapatController::class, 'store'])->name('buatrapat.store');
+    Route::get('/buatrapat/komisi2', [Komisi2RapatController::class, 'create'])->name('buatrapat.komisi2create');
+    Route::post('/buatrapat/komisi2store', [Komisi2RapatController::class, 'store'])->name('buatrapat.komisi2store');
+    Route::get('/buatrapat/komisi3', [Komisi3RapatController::class, 'create'])->name('buatrapat.komisi3create');
+    Route::post('/buatrapat/komisi3store', [Komisi3RapatController::class, 'store'])->name('buatrapat.komisi3store');
+    Route::get('/buatrapat/komisi4', [Komisi4RapatController::class, 'create'])->name('buatrapat.komisi4create');
+    Route::post('/buatrapat/komisi4store', [Komisi4RapatController::class, 'store'])->name('buatrapat.komisi4store');
+    Route::get('/buatrapat/badanlegislasi', [BadanLegislasiRapatController::class, 'create'])->name('buatrapat.badanlegislasicreate');
+    Route::post('/buatrapat/badanlegislasistore', [BadanLegislasiRapatController::class, 'store'])->name('buatrapat.badanlegislasistore');
+    Route::get('/buatrapat/badananggaran', [BadanAnggaranRapatController::class, 'create'])->name('buatrapat.badananggarancreate');
+    Route::post('/buatrapat/badananggaranstore', [BadanAnggaranRapatController::class, 'store'])->name('buatrapat.badananggaranstore');
+    Route::get('/buatrapat/badankehormatan', [BadanKehormatanRapatController::class, 'create'])->name('buatrapat.badankehormatancreate');
+    Route::post('/buatrapat/badankehormatanstore', [BadanKehormatanRapatController::class, 'store'])->name('buatrapat.badankehormatanstore');
+    Route::get('/buatrapat/bksap', [BKSAPRapatController::class, 'create'])->name('buatrapat.bksapcreate');
+    Route::post('/buatrapat/bksapstore',[BKSAPRapatController::class, 'store'])->name('buatrapat.bksapstore');
 
 
 Route::get('/jadwalrapat', function () {
@@ -170,7 +191,6 @@ Route::get('/evalsenator', function () {
     
 
     
-
 });
 
 // ======================== END CMS ==================================
