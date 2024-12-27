@@ -163,6 +163,10 @@ Route::post('/buatrapat/store', [BuatRapatController::class, 'store'])->name('bu
 Route::get('/jadwalrapat', function () {
     return view('cms.jadwalrapat.index');
 })->name('admin.jadwalrapat.index');
+
+Route::get('/evalsenator', function () {
+    return view('cms.evalsenator.index');
+})->name('admin.evalsenator.index');
     
 
     

@@ -1,0 +1,170 @@
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.cms-header {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #3d5654;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Form Section */
+.form-container {
+    max-width: 1100px;
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    margin-top: -20px;
+    justify-content: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #495057;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #425c5a;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+.attendance-inputs {
+    display: flex;
+    gap: 20px;
+}
+
+.attendance-inputs div {
+    flex: 1;
+}
+
+.btn-submit {
+    display: flex;
+    width: 30%;
+    padding: 12px 16px;
+    background-color: #425c5a;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.btn-submit:hover {
+    background-color: #425c5a;
+}
+
+/* Table Section */
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: center;
+}
+
+th {
+    background-color: #425c5a;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+td {
+    border-bottom: 1px solid #e9ecef;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Action Buttons */
+.btn-edit, .btn-delete {
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .attendance-inputs {
+        flex-direction: column;
+    }
+
+    th, td {
+        font-size: 12px;
+        padding: 10px 8px;
+    }
+}

@@ -79,6 +79,24 @@
                   <span class="text">Faq</span>
                 </a>
               </li>
+              <li>
+                <a href="{{ url("/admin/buatrapat") }}">
+                  <span class="icon"><i class="fas fa-question"></i></span>
+                  <span class="text">Buat Rapat</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ url("/admin/evalsenator") }}">
+                  <span class="icon"><i class="fas fa-question"></i></span>
+                  <span class="text">Eval Senator</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ url("/admin/jadwalrapat") }}">
+                  <span class="icon"><i class="fas fa-question"></i></span>
+                  <span class="text">Jadwal Rapat</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>

@@ -14,8 +14,8 @@
       <a href="{{ url('/admin/events') }}"><button class="btn item">Events</button></a>
       <a href="{{ url('/admin/persetujuan-proposal') }}"><button class="btn item">Persetujuan Proposal</button></a>
       <a href="{{ url('/admin/faq') }}"><button class="btn item">FAQ</button></a>
-      <a href="{{ url('/admin/buatrapat') }}"><button class="btn item">buat rapat</button></a>
-      <a href="{{ url('/admin/evalsenator') }}"><button class="btn item">eval senator</button></a>
+      <a href="{{ url('/admin/buatrapat') }}"><button class="btn item">Buat Rapat</button></a>
+      <a href="{{ url('/admin/evalsenator') }}"><button class="btn item">Eval Senator</button></a>
       <a href="{{ url('/admin/jadwalrapat') }}"><button class="btn item">Jadwal Rapat</button></a>
       
 

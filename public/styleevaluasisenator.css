@@ -86,3 +86,34 @@ tbody tr td, tbody tr td p, tbody tr td img {
     background-color: #cbb989;
     border-radius: 5px;
 }
+
+.table-navigation {
+    text-align: center; /* Pusatkan tombol */
+    margin-top: 20px; /* Tambahkan jarak dengan tabel */
+    margin-bottom: 30px;
+  }
+  
+  .table-navigation button {
+    background-color: #cfb53b; /* Warna hijau */
+    color: white; /* Warna teks */
+    border: none; /* Hilangkan border */
+    padding: 10px 20px; /* Tambahkan ruang di sekitar teks */
+    margin: 0 10px; /* Jarak antar tombol */
+    font-size: 16px; /* Ukuran teks */
+    border-radius: 5px; /* Membuat sudut tombol melengkung */
+    cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+    transition: background-color 0.3s, transform 0.2s; /* Animasi halus */
+  }
+  
+  .table-navigation button:hover {
+    background-color: #cfb53b; /* Warna lebih gelap saat dihover */
+    transform: scale(1.05); /* Perbesar tombol sedikit saat dihover */
+  }
+  
+  .table-navigation button:disabled {
+    background-color: #cccccc; /* Warna abu-abu untuk tombol yang dinonaktifkan */
+    color: #666666; /* Warna teks untuk tombol yang dinonaktifkan */
+    cursor: not-allowed; /* Ubah kursor menjadi tanda larangan */
+    transform: none; /* Nonaktifkan animasi pada tombol yang dinonaktifkan */
+  }
+  
