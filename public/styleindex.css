@@ -89,7 +89,32 @@ nav {
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-}
+  }
+  
+  .nav-logo {
+    display: inline-flex;
+    align-items: center; /* Mengatur vertikal ke tengah */
+  }
+  
+  .nav-logo img {
+    max-width: 100px;
+  }
+  
+  .nav-title {
+    display: inline-flex;
+    margin-left: 10px;
+    font-size: 1.2rem;
+    color: #cfb53b;
+    font-weight: 600;
+    align-items: center; /* Mengatur vertikal ke tengah */
+  }
+  .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
 
 header {
     position: relative;

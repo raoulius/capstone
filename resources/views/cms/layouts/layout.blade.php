@@ -70,7 +70,7 @@
               <li>
                 <a href="{{ url("/admin/persetujuan-proposal") }}">
                   <span class="icon"><i class="fas fa-handshake"></i></span>
-                  <span class="text">Persetujuan Proposal</span>
+                  <span class="text">Persetujuan Propo</span>
                 </a>
               </li>
               <li>

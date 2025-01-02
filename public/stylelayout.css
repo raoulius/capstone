@@ -73,9 +73,10 @@ body {
 
 nav {
     width: 100%;
-    margin: 0 auto; /* Menggunakan auto untuk memastikan navbar berada di tengah */
+    margin: 0 auto;
     padding: 2rem 1rem;
-    display: flex;
+    display: flex
+;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
@@ -131,6 +132,11 @@ nav {
     background-color: #cfb53b;
     z-index: 9999;
 }
+
+#link7 {
+    list-style-type: none; /* Menghapus titik/bullet */
+  }
+  
 
 .btn {
     padding: 1rem 2rem;

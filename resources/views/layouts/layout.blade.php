@@ -20,6 +20,7 @@
       crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
+      
 
     <link type="image/x-icon" href="{{ URL::asset("img/coba23.ico") }}" rel="icon">
     <link type="image/x-icon" href="{{ URL::asset("img/coba23.ico") }}" rel="shortcut icon">
@@ -101,7 +102,7 @@
               <a class="nav2__link" href="{{ url("/peminjamanruangan") }}">
                 <i class='bx bx-time nav2__icon'></i>
                 <span class="nav2__name">Evaluasi Senator</span>
-              </a>
+              </a>  
               <a class="nav2__link" href="{{ url("/login") }}">
                 <i class='bx bx-time nav2__icon'></i>
                 <span class="nav2__name">Ajukan Surat</span>
@@ -142,8 +143,18 @@
         </li>
         <li class="link" id="link6"><a href="{{ url("/peminjamanruangan") }}">Peminjaman Ruangan</a></li>
       </ul>
-      <li class="link" id="link7"><a href="{{ url("/evaluasisenator") }}">Evaluasi Senator</a></li>
-      </ul>
+      <li class="link" id="link7">
+        <div class="dropdown">
+          <button class="dropbtn">Evaluasi Senator</button>
+          <div class="dropdown-content">
+            <a href="/evaluasi/rapat_pimpinan">Rapat Pimpinan</a>
+            <a href="/evaluasi/agenda_kerja">Agenda Kerja</a>
+            <a href="/evaluasi/sidang_pleno">Sidang Pleno dan Paripurna</a>
+          </div>
+        </div>
+      </li>
+      
+      
 
       <a href="{{ url("/login") }}"><button class="btn btn-ajukansurat" type="button">Ajukan Surat</button></a>
     </nav>
@@ -216,4 +227,6 @@
   </script>
 
 </html>
+
+
 

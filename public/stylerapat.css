@@ -1508,6 +1508,20 @@ footer .column > a:hover {
     margin-left: 0rem;
 }
 
+
+.meeting-info {
+  text-align: left;
+  margin-top: 10px;
+  font-size: 20px;
+  color: whitesmoke;
+  font-family: "Poppins", sans-serif;
+  margin-left: 72px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+
+
 @media (width < 1000px) {
     .img-aktivitas-sm {
         height: 90%;

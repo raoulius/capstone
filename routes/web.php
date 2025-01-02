@@ -37,6 +37,8 @@ use App\Http\Controllers\Admin\BadanKehormatanRapatController;
 use App\Http\Controllers\Admin\BKSAPRapatController;
 
 
+
+
 use App\Models\AktivitasSenat;
 use App\Models\JDIH;
 use Illuminate\Support\Facades\Mail;
@@ -76,6 +78,19 @@ Route::get('/peminjamanruangan', [RuanganController::class, 'index']);
 
 Route::get('/evaluasisenator', function () {
     return view('evaluasisenator');
+});
+
+Route::get('/evaluasi/rapat_pimpinan', function () {
+    return view('evaluasi.rapat_pimpinan');
+});
+
+Route::get('/evaluasi/agenda_kerja', function () {
+    return view('evaluasi.agenda_kerja');
+});
+
+
+Route::get('/evaluasi/sidang_pleno', function () {
+    return view('evaluasi.sidang_pleno');
 });
 
 
@@ -188,6 +203,10 @@ Route::get('/jadwalrapat', function () {
 Route::get('/evalsenator', function () {
     return view('cms.evalsenator.index');
 })->name('admin.evalsenator.index');
+
+
+
+
     
 
     
@@ -248,6 +267,9 @@ Route::group([
     Route::get('/list-revisi/{proposalId}', [KomisiController::class, 'listRevisi'])->name('proposal.revisi');
     Route::get('/revisi/create/{proposalId}', [KomisiController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [KomisiController::class, 'createRevisi'])->name('revisi.store');
+    Route::get('/rapat', function () {
+        return view('komisi.agenda-komisi.rapat');
+    })->name('komisi.agenda.rapat');
 });
 // ======================== END KOMISi II==================================
 // ======================== KOMISI III==================================
@@ -273,6 +295,10 @@ Route::group([
     Route::get('/list-revisi/{proposalId}', [KomisiController::class, 'listRevisi'])->name('proposal.revisi');
     Route::get('/revisi/create/{proposalId}', [KomisiController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [KomisiController::class, 'createRevisi'])->name('revisi.store');
+    Route::get('/rapat', function () {
+        return view('komisi.agenda-komisi.rapat');
+    })->name('komisi.agenda.rapat');
+    
 });
 // ======================== END KOMISi III==================================
 // ======================== KOMISI IV==================================
@@ -298,6 +324,9 @@ Route::group([
     Route::get('/list-revisi/{proposalId}', [KomisiController::class, 'listRevisi'])->name('proposal.revisi');
     Route::get('/revisi/create/{proposalId}', [KomisiController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [KomisiController::class, 'createRevisi'])->name('revisi.store');
+    Route::get('/rapat', function () {
+        return view('komisi.agenda-komisi.rapat');
+    })->name('komisi.agenda.rapat');
 });
 // ======================== END KOMISi IV==================================
 // ======================== BADAN ANGGARAN ==================================

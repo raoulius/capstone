@@ -24,8 +24,8 @@ body {
 }
 
 nav {
-    max-width: 100%;
-    margin: 0 auto; /* Menggunakan auto untuk memastikan navbar berada di tengah */
+    width: 100%;
+    margin: 0 auto;
     padding: 2rem 1rem;
     display: flex;
     align-items: center;

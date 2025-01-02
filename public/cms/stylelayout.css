@@ -41,6 +41,9 @@ body {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     position: relative;
+    overflow-y: auto;  /* Menambahkan scroll vertical */
+    max-height: 100vh;
+
 }
 
 .vertical_bar .profile_info {

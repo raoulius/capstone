@@ -56,6 +56,9 @@
             <div class="event-day">wed</div>
             <div class="event-date">12th december 2022</div>
           </div>
+          <div class="meeting-info">
+            <p>Click below to begin meeting</p>
+          </div>
           <div class="events"></div>
           <div class="add-event-wrapper">
             <div class="add-event-header">
