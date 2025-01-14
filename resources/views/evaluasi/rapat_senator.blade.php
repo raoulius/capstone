@@ -16,7 +16,7 @@
   <body>
 
     <section id="dynamic-section">
-        <h2 class="header">RAPAT PIMPINAN</h2>
+        <h2 class="header">RAPAT SENATOR</h2>
         <p class="sub-header">Berisikan tentang data presensi senator selama tiga bulan</p>
       </section>
       

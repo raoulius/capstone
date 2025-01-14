@@ -82,7 +82,7 @@
         // Data deskripsi untuk setiap tabel
         const sectionData = [
           {
-            title: "SIDANG PLENO DAN PARIPURNA",
+            title: "SIDANG PARIPURNA",
             description: "Berisikan Data Presensi Rapat Sidang Pleno dan Paripurna."
           }
         ];

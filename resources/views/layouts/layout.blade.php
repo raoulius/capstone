@@ -148,8 +148,13 @@
           <button class="dropbtn">Evaluasi Senator</button>
           <div class="dropdown-content">
             <a href="/evaluasi/rapat_pimpinan">Rapat Pimpinan</a>
-            <a href="/evaluasi/agenda_kerja">Agenda Kerja</a>
-            <a href="/evaluasi/sidang_pleno">Sidang Pleno dan Paripurna</a>
+            <a href="/evaluasi/rapat_senator">Rapat Senator</a>
+            <a href="/evaluasi/agenda_kerja">Rapat Komisi</a>
+            <a href="/evaluasi/sidang_pleno">Rapat Badan</a>
+            <a href="/evaluasi/sidang_agendakerja">Agenda Kerja</a>
+            <a href="/evaluasi/sidang_pleno1">Sidang Pleno</a>
+            <a href="/evaluasi/sidang_paripurna">Sidang Paripurna</a>
+
           </div>
         </div>
       </li>

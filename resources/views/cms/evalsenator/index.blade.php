@@ -12,24 +12,37 @@
                 <label for="name">Nama Senator:</label>
                 <input type="text" id="name" name="name" placeholder="Masukkan nama senator" required>
             </div>
+            <div class="form-group">
+                <label for="name">Jenis Rapat:</label>
+                <input type="text" id="name" name="name" placeholder="Masukkan jenis rapat" required>
+            </div>
 
             <div class="form-group">
                 <label for="attendance">Presensi (%)</label>
                 <div class="attendance-inputs">
+                    <label1 for="bulan">Bulan:</label1>
+                    <select id="bulan" name="attendance[bulan]" required>
+                        <option value="" disabled selected>Pilih Bulan</option>
+                        <option value="januari">Januari</option>
+                        <option value="februari">Februari</option>
+                        <option value="maret">Maret</option>
+                        <option value="april">April</option>
+                        <option value="mei">Mei</option>
+                        <option value="juni">Juni</option>
+                        <option value="juli">Juli</option>
+                        <option value="agustus">Agustus</option>
+                        <option value="september">September</option>
+                        <option value="oktober">Oktober</option>
+                        <option value="november">November</option>
+                        <option value="desember">Desember</option>
+                    </select>
                     <div>
-                        <label for="januari">Januari:</label>
-                        <input type="number" id="januari" name="attendance[januari]" placeholder="0-100" min="0" max="100" required>
-                    </div>
-                    <div>
-                        <label for="februari">Februari:</label>
-                        <input type="number" id="februari" name="attendance[februari]" placeholder="0-100" min="0" max="100" required>
-                    </div>
-                    <div>
-                        <label for="maret">Maret:</label>
-                        <input type="number" id="maret" name="attendance[maret]" placeholder="0-100" min="0" max="100" required>
+                        <label1 for="persentase">Presensi (%):</label1>
+                        <input type="number" id="persentase" name="attendance[persentase]" placeholder="0-100" min="0" max="100" required>
                     </div>
                 </div>
             </div>
+            
 
             <button type="submit" class="btn-submit">Tambah</button>
         </form>

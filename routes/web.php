@@ -35,6 +35,8 @@ use App\Http\Controllers\Admin\BadanLegislasiRapatController;
 use App\Http\Controllers\Admin\BadanAnggaranRapatController;
 use App\Http\Controllers\Admin\BadanKehormatanRapatController;
 use App\Http\Controllers\Admin\BKSAPRapatController;
+use App\Http\Controllers\JadwalRapatController;
+
 
 
 
@@ -91,6 +93,26 @@ Route::get('/evaluasi/agenda_kerja', function () {
 
 Route::get('/evaluasi/sidang_pleno', function () {
     return view('evaluasi.sidang_pleno');
+});
+
+Route::get('/evaluasi/sidang_pleno1', function () {
+    return view('evaluasi.sidang_pleno1');
+});
+
+Route::get('/evaluasi/sidang_paripurna', function () {
+    return view('evaluasi.sidang_paripurna');
+});
+
+Route::get('/evaluasi/rapat_senator', function () {
+    return view('evaluasi.rapat_senator');
+});
+
+Route::get('/evaluasi/sidang_agendakerja', function () {
+    return view('evaluasi.sidang_agendakerja');
+});
+
+Route::get('/evaluasi/sidang_paripurna', function () {
+    return view('evaluasi.sidang_paripurna');
 });
 
 
@@ -203,6 +225,11 @@ Route::get('/jadwalrapat', function () {
 Route::get('/evalsenator', function () {
     return view('cms.evalsenator.index');
 })->name('admin.evalsenator.index');
+
+
+
+
+
 
 
 

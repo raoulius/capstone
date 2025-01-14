@@ -39,6 +39,14 @@ label {
     margin-bottom: 8px;
     color: #495057;
 }
+.label1 {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #495057;
+    margin-top: -20px;
+}
 
 input[type="text"], input[type="number"] {
     width: 100%;
@@ -155,6 +163,34 @@ tr:last-child td {
 
 .btn-delete:hover {
     background-color: #c82333;
+}
+
+.attendance-inputs {
+    margin-top: 10px;
+}
+
+.attendance-inputs select,
+.attendance-inputs input {
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #555;
+}
+
+.attendance-inputs select:focus,
+.attendance-inputs input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.attendance-inputs input::placeholder {
+    color: #aaa;
+    font-style: italic;
 }
 
 /* Responsive Design */

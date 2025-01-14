@@ -34,13 +34,6 @@
           <tbody id="table-body"></tbody>
         </table>
       </div>
-      
-      <div class="table-navigation">
-        <button id="prev-table-btn" disabled>Sebelum</button>
-        <button id="next-table-btn">Selanjutnya</button>
-      </div>
-      
-
 
       <script>
         // Data untuk beberapa tabel
@@ -82,20 +75,6 @@
         ];
       
         const tableBody = document.getElementById("table-body");
-        const prevTableBtn = document.getElementById("prev-table-btn");
-        const nextTableBtn = document.getElementById("next-table-btn");
-        const dynamicSection = document.getElementById("dynamic-section");
-      
-        let currentTableIndex = 0;
-      
-        // Data deskripsi untuk setiap tabel
-        const sectionData = [
-          {
-            title: "AGENDA KERJA",
-            description: "Berisikan Data Presensi Rapat Agenda Kerja."
-          },
-          
-        ];
       
         // Fungsi untuk merender tabel berdasarkan indeks
         function renderTable(index) {
@@ -116,33 +95,20 @@
             tableBody.appendChild(tr);
           });
       
-          // Perbarui status tombol navigasi
-          prevTableBtn.disabled = index === 0;
-          nextTableBtn.disabled = index === tables.length - 1;
-      
           // Perbarui konten section
+          const sectionData = [
+            {
+              title: "AGENDA KERJA",
+              description: "Berisikan Data Presensi Rapat Agenda Kerja."
+            },
+          ];
           const currentSection = sectionData[index];
+          const dynamicSection = document.getElementById("dynamic-section");
           dynamicSection.querySelector(".header").textContent = currentSection.title;
           dynamicSection.querySelector(".sub-header").textContent = currentSection.description;
         }
       
-        // Event Listener untuk Tombol Navigasi
-        prevTableBtn.addEventListener("click", () => {
-          if (currentTableIndex > 0) {
-            currentTableIndex--;
-            renderTable(currentTableIndex);
-          }
-        });
-      
-        nextTableBtn.addEventListener("click", () => {
-          if (currentTableIndex < tables.length - 1) {
-            currentTableIndex++;
-            renderTable(currentTableIndex);
-          }
-        });
-      
         // Render tabel pertama saat halaman dimuat
-        renderTable(currentTableIndex);
+        renderTable(0);
       </script>
     @endsection
-
