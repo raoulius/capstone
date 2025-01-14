@@ -17,7 +17,7 @@
       <a href="{{ url('/admin/buatrapat') }}"><button class="btn item">Buat Rapat</button></a>
       <a href="{{ url('/admin/evalsenator') }}"><button class="btn item">Evaluasi Senator</button></a>
       <a href="{{ url('/admin/jadwalrapat') }}"><button class="btn item">Jadwal Rapat</button></a>
-      
+      <a href="{{ url('/admin/master-rapat') }}"><button class="btn item">test</button></a>
 
 
     </div>
