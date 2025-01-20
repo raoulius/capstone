@@ -83,7 +83,7 @@ body {
 
 nav {
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto; /* Menggunakan auto untuk memastikan navbar berada di tengah */
     padding: 2rem 1rem;
     display: flex;
     align-items: center;
@@ -160,7 +160,7 @@ section .header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    margin: 0 auto;
 }
 
 
@@ -1029,6 +1029,8 @@ footer .column > a:hover {
     font-size: 18px;
     margin-left: 0rem;
 }
+
+
 
 @media (width < 1000px) {
     .img-aktivitas-sm {

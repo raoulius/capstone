@@ -36,151 +36,88 @@
         const modal = $('#modal-action')
         const csrfToken = $('meta[name=csrf-token]').attr('content')
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                themeSystem: 'bootstrap5',
-                events: `{{ route("admin.legislasi.list") }}`,
-                editable: true,
-                dateClick: function (info) {
-                    $.ajax({
-                        url: `{{ route("admin.events.create") }}`,
-                        data: {
-                            start_date: info.dateStr,
-                            end_date: info.dateStr
-                        },
-                        success: function (res) {
-                            modal.html(res).modal('show')
-                            $('.datepicker').datepicker({
-                                todayHighlight: true,
-                                format: 'yyyy-mm-dd'
-                            });
+// ... existing code ...
 
-                            $('#form-action').on('submit', function (e) {
-                                e.preventDefault()
-                                const form = this
-                                const formData = new FormData(form)
-                                $.ajax({
-                                    url: form.action,
-                                    method: form.method,
-                                    data: formData,
-                                    processData: false,
-                                    contentType: false,
-                                    headers: {
-                                        'X-CSRF-TOKEN': csrfToken
-                                    },
-                                    success: function (res) {
-                                        modal.modal('hide')
-                                        calendar.refetchEvents()
-                                    },
-                                    error: function (res) {
+document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        themeSystem: 'bootstrap5',
+        events: `{{ url("master-rapat.list") }}`,  // Changed this line
+        editable: true,
+        eventContent: function(arg) {
+            return {
+                html: `
+                    <div class="fc-content">
+                        <div class="fc-title">${arg.event.title}</div>
+                        <div class="fc-description small">${arg.event.extendedProps.komisi_type}</div>
+                    </div>
+                `
+            };
+        },
+        eventClick: function ({ event }) {
+            $.ajax({
+                url: `{{ route("admin/master-rapat") }}/${event.id}/edit`,
+                success: function (res) {
+                    modal.html(res).modal('show')
 
-
-                                    }
-                                })
-                            })
-                        }
-                    })
-                },
-                eventClick: function ({ event }) {
-                    $.ajax({
-                        url: `{{ url("admin/events") }}/${event.id}/edit`,
-                        success: function (res) {
-                            modal.html(res).modal('show')
-
-                            $('#form-action').on('submit', function (e) {
-                                e.preventDefault()
-                                const form = this
-                                const formData = new FormData(form)
-                                $.ajax({
-                                    url: form.action,
-                                    method: form.method,
-                                    data: formData,
-                                    processData: false,
-                                    contentType: false,
-                                    headers: {
-                                        'X-CSRF-TOKEN': csrfToken
-                                    },
-                                    success: function (res) {
-                                        modal.modal('hide')
-                                        calendar.refetchEvents()
-                                    }
-                                })
-                            })
-                        }
-                    })
-                },
-                eventDrop: function (info) {
-                    const event = info.event
-                    $.ajax({
-                        url: `{{ url("admin/events") }}/${event.id}`,
-                        method: 'put',
-                        data: {
-                            id: event.id,
-                            start_date: event.startStr,
-                            end_date: event.end.toISOString().substring(0, 10),
-                            title: event.title,
-                            category: event.extendedProps.category
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken,
-                            accept: 'application/json'
-                        },
-                        success: function (res) {
-                            iziToast.success({
-                                title: 'Success',
-                                message: res.message,
-                                position: 'topRight'
-                            });
-                        },
-                        error: function (res) {
-                            const message = res.responseJSON.message
-                            info.revert()
-                            iziToast.error({
-                                title: 'Error',
-                                message: message ?? 'Something wrong',
-                                position: 'topRight'
-                            });
-                        }
-                    })
-                },
-                eventResize: function (info) {
-                    const { event } = info
-                    $.ajax({
-                        url: `{{ url("admin/events") }}/${event.id}`,
-                        method: 'put',
-                        data: {
-                            id: event.id,
-                            start_date: event.startStr,
-                            end_date: event.end.toISOString().substring(0, 10),
-                            title: event.title,
-                            category: event.extendedProps.category
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken,
-                            accept: 'application/json'
-                        },
-                        success: function (res) {
-                            iziToast.success({
-                                title: 'Success',
-                                message: res.message,
-                                position: 'topRight'
-                            });
-                        },
-                        error: function (res) {
-                            const message = res.responseJSON.message
-                            info.revert()
-                            iziToast.error({
-                                title: 'Error',
-                                message: message ?? 'Something wrong',
-                                position: 'topRight'
-                            });
-                        }
+                    $('#form-action').on('submit', function (e) {
+                        e.preventDefault()
+                        const form = this
+                        const formData = new FormData(form)
+                        $.ajax({
+                            url: form.action,
+                            method: form.method,
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            headers: {
+                                'X-CSRF-TOKEN': csrfToken
+                            },
+                            success: function (res) {
+                                modal.modal('hide')
+                                calendar.refetchEvents()
+                            }
+                        })
                     })
                 }
-            });
-            calendar.render();
-        });
+            })
+        },
+        eventDrop: function (info) {
+            const event = info.event
+            $.ajax({
+                url: `{{ url("admin/master-rapat") }}/${event.id}`,
+                method: 'put',
+                data: {
+                    id: event.id,
+                    tanggal: event.start.toISOString().substring(0, 10),
+                    waktu_mulai: event.start.toISOString().substring(11, 16),
+                    waktu_selesai: event.end.toISOString().substring(11, 16),
+                },
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                    accept: 'application/json'
+                },
+                success: function (res) {
+                    iziToast.success({
+                        title: 'Success',
+                        message: res.message,
+                        position: 'topRight'
+                    });
+                },
+                error: function (res) {
+                    const message = res.responseJSON.message
+                    info.revert()
+                    iziToast.error({
+                        title: 'Error',
+                        message: message ?? 'Something wrong',
+                        position: 'topRight'
+                    });
+                }
+            })
+        }
+    });
+    calendar.render();
+});
     </script>
 @endsection

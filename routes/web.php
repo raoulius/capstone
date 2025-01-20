@@ -35,9 +35,7 @@ use App\Http\Controllers\Admin\BadanLegislasiRapatController;
 use App\Http\Controllers\Admin\BadanAnggaranRapatController;
 use App\Http\Controllers\Admin\BadanKehormatanRapatController;
 use App\Http\Controllers\Admin\BKSAPRapatController;
-use App\Http\Controllers\JadwalRapatController;
-
-
+use App\Http\Controllers\Admin\MasterRapatController;
 
 
 
@@ -227,12 +225,8 @@ Route::get('/evalsenator', function () {
 })->name('admin.evalsenator.index');
 
 
-
-
-
-
-
-
+Route::get('/master-rapat', [MasterRapatController::class, 'index'])->name('master-rapat.index');
+Route::get('/master-rapat/list', [MasterRapatController::class, 'getEvents'])->name('master-rapat.list');
 
     
 

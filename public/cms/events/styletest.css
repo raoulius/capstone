@@ -1,0 +1,93 @@
+/* Global Styles */
+body {
+    background-color: #f5f7fa; /* Warna latar belakang lembut */
+    font-family: 'Poppins', sans-serif; /* Font modern dan elegan */
+    color: #333; /* Warna teks utama */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Heading Styles */
+h1 {
+    color: #425c5a; /* Warna teks untuk judul, lebih tegas */
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: "Jost", sans-serif;
+}
+
+/* Container */
+.container {
+    max-width: 900px; /* Lebar container */
+    margin: 50px auto; /* Pusatkan dengan margin */
+    background: #ffffff; /* Latar belakang putih */
+    padding: 30px;
+    border-radius: 10px; /* Sudut membulat */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bayangan lembut */
+    
+}
+
+/* Table Styles */
+.table {
+    width: 100%; /* Gunakan seluruh lebar container */
+    margin-top: 20px;
+    border-collapse: collapse; /* Hilangkan spasi antar border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Bayangan lembut */
+    overflow: hidden; /* Untuk memastikan tampilan rapi */
+    border-radius: 8px; /* Sudut membulat untuk tabel */
+}
+
+.table th, .table td {
+    text-align: center; /* Teks rata tengah */
+    padding: 15px; /* Padding untuk elemen tabel */
+    font-size: 0.95rem; /* Ukuran font yang pas */
+}
+
+/* Header Styles */
+.table th {
+    background-color: #425c5a; /* Warna gelap elegan */
+    color: white; /* Teks putih */
+    font-weight: 600;
+    letter-spacing: 0.5px; /* Spasi antar huruf */
+    text-transform: uppercase; /* Teks kapital */
+}
+
+/* Row Hover Effect */
+.table tbody tr {
+    transition: background-color 0.3s ease; /* Animasi lembut untuk hover */
+}
+
+.table tbody tr:hover {
+    background-color: #ecf0f1; /* Warna highlight saat hover */
+}
+
+/* Striped Rows */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9fafb; /* Warna latar belakang baris ganjil */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #ffffff; /* Warna latar belakang baris genap */
+}
+
+/* Cell Content Styles */
+.table td {
+    color: #555; /* Warna teks isi tabel */
+    font-size: 0.9rem; /* Ukuran font yang lebih kecil */
+    line-height: 1.4; /* Jarak antar baris teks */
+    background-color: whitesmoke;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .table th, .table td {
+        font-size: 0.85rem; /* Ukuran font lebih kecil untuk perangkat kecil */
+        padding: 10px; /* Padding lebih kecil */
+    }
+}
