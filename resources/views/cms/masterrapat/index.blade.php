@@ -26,7 +26,7 @@
                 <td>{{ $item->agenda }}</td>
             </tr>
             @endforeach
-        </tbody>
+        </tbody> 
     </table>
 </div>
 @endsection
