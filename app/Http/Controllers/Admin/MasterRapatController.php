@@ -15,6 +15,8 @@ class MasterRapatController extends Controller
                            ->get();
         
         return view('cms.masterrapat.index', compact('rapat'));
+        
+        
     }
 
         public function getEvents()
@@ -57,4 +59,5 @@ class MasterRapatController extends Controller
             'message' => 'Rapat updated successfully'
         ]);
     }
+    
 }
