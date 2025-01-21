@@ -33,6 +33,7 @@
         <li class="link" id="link1"><a href="{{ url("/" . auth()->user()->role->role_slug . "/agendakerja") }}">Agenda Kerja</a></li>
         <li class="link" id="link4"><a href="{{ url("/" . auth()->user()->role->role_slug . "/transparansisurat") }}">Transparansi Surat</a></li>
         <li class="link" id="link4"><a href="{{ url("/" . auth()->user()->role->role_slug . "/rapat") }}">Rapat</a></li>
+
       </ul>
 
       <a href="{{ route("logout") }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
