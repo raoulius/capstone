@@ -263,6 +263,10 @@ Route::group([
     Route::get('/rapat', function () {
         return view('komisi.agenda-komisi.rapat');
     })->name('komisi.agenda.rapat');
+
+    Route::get('/mulairapat', function () {
+        return view('komisi.agenda-komisi.mulairapat');
+    })->name('komisi.agenda.mulairapat');
 });
 // ======================== END KOMISi I==================================
 // ======================== KOMISI II==================================

@@ -516,8 +516,10 @@ addEventSubmit.addEventListener("click", () => {
 //function to delete event when clicked on event
 eventsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("event")) {
-    if (confirm("Are you sure you want to delete this event?")) {
+    if (confirm("Are you sure you want to join this meeting?")) {
       const eventTitle = e.target.children[0].children[1].innerHTML;
+      const nextPageURL = `/komisi-i/mulairapat?event=${encodeURIComponent(eventTitle)}`;
+    window.location.href = nextPageURL;
       eventsArr.forEach((event) => {
         if (
           event.day === activeDay &&
