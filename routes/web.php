@@ -28,7 +28,6 @@ use App\Http\Controllers\PersetujuanProposal\KomisiController;
 use App\Http\Controllers\PersetujuanProposal\BadanAnggaranController;
 use App\Http\Controllers\PersetujuanProposal\SekjenController;
 use App\Http\Controllers\Admin\BuatRapatController;
-use App\Http\Controllers\Admin\Komisi2RapatController;
 use App\Http\Controllers\Admin\Komisi3RapatController;
 use App\Http\Controllers\Admin\Komisi4RapatController;
 use App\Http\Controllers\Admin\BadanLegislasiRapatController;
@@ -36,8 +35,15 @@ use App\Http\Controllers\Admin\BadanAnggaranRapatController;
 use App\Http\Controllers\Admin\BadanKehormatanRapatController;
 use App\Http\Controllers\Admin\BKSAPRapatController;
 use App\Http\Controllers\Admin\MasterRapatController;
-
-
+use App\Http\Controllers\Admin\Komisi2RapatController;
+use App\Http\Controllers\Komisi1RapatUserController;
+use App\Http\Controllers\Komisi2RapatUserController;
+use App\Http\Controllers\Komisi3RapatUserController;
+use App\Http\Controllers\Komisi4RapatUserController;
+use App\Http\Controllers\BadanAnggaranRapatUserController;
+use App\Http\Controllers\BadanKehormatanRapatUserController;
+use App\Http\Controllers\BadanLegislasiRapatUserController;
+use App\Http\Controllers\BKSAPRapatUserController;
 
 use App\Models\AktivitasSenat;
 use App\Models\JDIH;
@@ -260,13 +266,13 @@ Route::group([
     Route::get('/revisi/create/{proposalId}', [KomisiController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [KomisiController::class, 'createRevisi'])->name('revisi.store');
 
-    Route::get('/rapat', function () {
-        return view('komisi.agenda-komisi.rapat');
-    })->name('komisi.agenda.rapat');
+    Route::get('/rapat', [Komisi1RapatUserController::class, 'index'])->name('rapat.index');
 
     Route::get('/mulairapat', function () {
         return view('komisi.agenda-komisi.mulairapat');
     })->name('komisi.agenda.mulairapat');
+
+    Route::get('/mulairapat/{id}', [Komisi1RapatUserController::class, 'mulaiRapat'])->name('rapat.mulai');
 });
 // ======================== END KOMISi I==================================
 // ======================== KOMISI II==================================
@@ -292,9 +298,10 @@ Route::group([
     Route::get('/list-revisi/{proposalId}', [KomisiController::class, 'listRevisi'])->name('proposal.revisi');
     Route::get('/revisi/create/{proposalId}', [KomisiController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [KomisiController::class, 'createRevisi'])->name('revisi.store');
-    Route::get('/rapat', function () {
-        return view('komisi.agenda-komisi.rapat');
-    })->name('komisi.agenda.rapat');
+
+    Route::get('/rapat', [Komisi2RapatUserController::class, 'index'])->name('rapat.index');
+
+    Route::get('/mulairapat/{id}', [Komisi2RapatUserController::class, 'mulaiRapat'])->name('rapat.mulai');
 });
 // ======================== END KOMISi II==================================
 // ======================== KOMISI III==================================
@@ -320,10 +327,9 @@ Route::group([
     Route::get('/list-revisi/{proposalId}', [KomisiController::class, 'listRevisi'])->name('proposal.revisi');
     Route::get('/revisi/create/{proposalId}', [KomisiController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [KomisiController::class, 'createRevisi'])->name('revisi.store');
-    Route::get('/rapat', function () {
-        return view('komisi.agenda-komisi.rapat');
-    })->name('komisi.agenda.rapat');
     
+    Route::get('/rapat', [Komisi3RapatUserController::class, 'index'])->name('rapat.index');
+    Route::get('/mulairapat/{id}', [Komisi3RapatUserController::class, 'mulaiRapat'])->name('rapat.mulai');
 });
 // ======================== END KOMISi III==================================
 // ======================== KOMISI IV==================================
@@ -349,9 +355,9 @@ Route::group([
     Route::get('/list-revisi/{proposalId}', [KomisiController::class, 'listRevisi'])->name('proposal.revisi');
     Route::get('/revisi/create/{proposalId}', [KomisiController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [KomisiController::class, 'createRevisi'])->name('revisi.store');
-    Route::get('/rapat', function () {
-        return view('komisi.agenda-komisi.rapat');
-    })->name('komisi.agenda.rapat');
+    
+    Route::get('/rapat', [Komisi4RapatUserController::class, 'index'])->name('rapat.index');
+    Route::get('/mulairapat/{id}', [Komisi4RapatUserController::class, 'mulaiRapat'])->name('rapat.mulai');
 });
 // ======================== END KOMISi IV==================================
 // ======================== BADAN ANGGARAN ==================================
@@ -377,9 +383,12 @@ Route::group([
     Route::get('/list-revisi/{proposalId}', [BadanAnggaranController::class, 'listRevisi'])->name('proposal.revisi');
     Route::get('/revisi/create/{proposalId}', [BadanAnggaranController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [BadanAnggaranController::class, 'createRevisi'])->name('revisi.store');
+
+    Route::get('/rapat', [BadanAnggaranRapatUserController::class, 'index'])->name('rapat.index');
+    Route::get('/mulairapat/{id}', [BadanAnggaranRapatUserController::class, 'mulaiRapat'])->name('rapat.mulai');
 });
 // ======================== END BADAN ANGGARAN ==================================
-// ========================---------- KOMISI ----------==================================
+// ========================---------- Badan Kehormatan ----------==================================
 Route::group([
     'prefix' => 'badan-kehormatan',
     'as' => 'badan-kehormatan.',
@@ -392,6 +401,9 @@ Route::group([
     Route::get('/agendakerja/{id}/edit', [AgendaBadanController::class, 'showEdit'])->name('agenda.edit');
     Route::put('/agendakerja/{id}', [AgendaBadanController::class, 'update'])->name('agenda.update');
     Route::delete('/agendakerja/{id}', [AgendaBadanController::class, 'destroy'])->name('agenda.destroy');
+
+    Route::get('/rapat', [BadanKehormatanRapatUserController::class, 'index'])->name('rapat.index');
+    Route::get('/mulairapat/{id}', [BadanKehormatanRapatUserController::class, 'mulaiRapat'])->name('rapat.mulai');
 });
 // ======================== END BADAN Kehormatan ==================================
 Route::group([
@@ -406,8 +418,12 @@ Route::group([
     Route::get('/agendakerja/{id}/edit', [AgendaBadanController::class, 'showEdit'])->name('agenda.edit');
     Route::put('/agendakerja/{id}', [AgendaBadanController::class, 'update'])->name('agenda.update');
     Route::delete('/agendakerja/{id}', [AgendaBadanController::class, 'destroy'])->name('agenda.destroy');
+
+    Route::get('/rapat', [BadanLegislasiRapatUserController::class, 'index'])->name('rapat.index');
+    Route::get('/mulairapat/{id}', [BadanLegislasiRapatUserController::class, 'mulaiRapat'])->name('rapat.mulai');
 });
-// ======================== END BADAN legislasi ==================================
+    // ======================== END BADAN legislasi ==================================
+// ========================---------- BKSAP ----------==================================
 Route::group([
     'prefix' => 'bksap',
     'as' => 'bksap.',
@@ -420,7 +436,11 @@ Route::group([
     Route::get('/agendakerja/{id}/edit', [AgendaBadanController::class, 'showEdit'])->name('agenda.edit');
     Route::put('/agendakerja/{id}', [AgendaBadanController::class, 'update'])->name('agenda.update');
     Route::delete('/agendakerja/{id}', [AgendaBadanController::class, 'destroy'])->name('agenda.destroy');
+
+    Route::get('/rapat', [BKSAPRapatUserController::class, 'index'])->name('rapat.index');
+    Route::get('/mulairapat/{id}', [BKSAPRapatUserController::class, 'mulaiRapat'])->name('rapat.mulai');
 });
+// ========================---------- END BKSAP ----------==================================
 // ======================== END BADAN legislasi ==================================
 Route::group([
     'prefix' => 'burt',

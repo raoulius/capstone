@@ -23,57 +23,14 @@
 </head>
 <link href="{{ asset('stylemulairapat.css') }}" rel="stylesheet">
 
-<h2 class="header">MEETING SCHEDULE</h2>
-
-<!-- Tombol Absen -->
-<div class="button-container">
-    <button class="btn-absen" onclick="handleAbsen()">Absen Sekarang</button>
+<div class="container">
+    <h2>Start Rapat</h2>
+    <p><strong>Date:</strong> {{ $rapat->tanggal }}</p>
+    <p><strong>Time:</strong> {{ $rapat->waktu_mulai }} - {{ $rapat->waktu_selesai }}</p>
+    <p><strong>Title:</strong> {{ $rapat->nama }}</p>
+    <p><strong>Agenda:</strong> {{ $rapat->agenda }}</p>
+    <!-- Add more details or functionality as needed -->
 </div>
 
-<!-- Tabel Meeting Schedule -->
-<div class="table-container">
-    <table class="schedule-table">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Meeting Title</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Location</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Monthly Review</td>
-                <td>2025-01-25</td>
-                <td>10:00 AM</td>
-                <td>Conference Room A</td>
-                <td><button class="btn-details">Details</button></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Project Kickoff</td>
-                <td>2025-01-28</td>
-                <td>02:00 PM</td>
-                <td>Conference Room B</td>
-                <td><button class="btn-details">Details</button></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
 
-<script>
-    function handleAbsen() {
-        alert('Absen berhasil dilakukan!');
-    }
-
-    public function mulaiRapat(Request $request)
-{
-    $eventTitle = $request->query('event'); // Mengambil parameter 'event'
-    return view('komisi-i.mulai-rapat', compact('eventTitle'));
-}
-
-</script>
 @endsection

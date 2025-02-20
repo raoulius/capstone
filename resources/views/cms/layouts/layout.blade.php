@@ -92,7 +92,7 @@
                 </a>
               </li>
               <li>
-                <a href="{{ url("/admin/jadwalrapat") }}">
+                <a href="{{ url("/admin/master-rapat") }}">
                   <span class="icon"><i class="fas fa-question"></i></span>
                   <span class="text">Jadwal Rapat</span>
                 </a>

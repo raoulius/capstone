@@ -10,7 +10,7 @@ class BuatRapat extends Model
     use HasFactory;
 
     // If your table name is not the plural of the model name, define it here
-    protected $table = 'rapat';
+    protected $table = 'rapat_komisi_1';
 
     // Define the fields that are mass assignable
     protected $fillable = [
