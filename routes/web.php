@@ -44,7 +44,7 @@ use App\Http\Controllers\BadanAnggaranRapatUserController;
 use App\Http\Controllers\BadanKehormatanRapatUserController;
 use App\Http\Controllers\BadanLegislasiRapatUserController;
 use App\Http\Controllers\BKSAPRapatUserController;
-use App\Http\Controllers\FacialRecognitionController;
+
 use App\Models\AktivitasSenat;
 use App\Models\JDIH;
 use Illuminate\Support\Facades\Mail;
@@ -150,9 +150,6 @@ Route::get('/jdih/jenis/{id}', [JDIHController::class, 'jenis'])->name('jdih.jen
 
 Route::get('jdih/show/{id}', [JDIHController::class, 'showJDIH'])->name('jdih.show');
 Route::get('events/list', [EventAdminController::class, 'listEvent'])->name('legislasi.list');
-
-Route::get('/facial-recognition/start/{rapat_id}', [FacialRecognitionController::class, 'startRecognition'])
-    ->name('facial-recognition.start');
 
 // ======================== END WEBSITE ==================================
 
