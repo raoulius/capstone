@@ -21,5 +21,25 @@ class Komisi2Rapat extends Model
         'waktu_selesai',
         'jenis_rapat',
         'agenda',
+        'komisi_id',
     ];
+
+    protected static function boot()
+{
+    parent::boot();
+    static::creating(function ($model) {
+        $model->komisi_id = 2; // Auto-set for Komisi 2
+    });
+}
+
+// app/Models/Komisi2Rapat.php
+public function unified_attendances()
+{
+    return $this->morphMany(Attendance::class, 'rapat');
+}
+
+public function attendances()
+{
+    return $this->hasMany(Attendance::class, 'rapat_id');
+}
 }
