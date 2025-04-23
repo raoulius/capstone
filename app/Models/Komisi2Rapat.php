@@ -21,7 +21,6 @@ class Komisi2Rapat extends Model
         'waktu_selesai',
         'jenis_rapat',
         'agenda',
-        'komisi_id',
     ];
 
     protected static function boot()
