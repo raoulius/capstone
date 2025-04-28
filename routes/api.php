@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AspirasiController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\AttendanceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,6 +32,13 @@ Route::post('/aspirasi',[AspirasiController::class, 'createAspirasi']);
 Route::get('/aspirasi',[AspirasiController::class, 'getAspirasi']);
 
 Route::post('/register', [AuthController::class, 'createAccount']);
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::post('/attendance', [AttendanceController::class, 'store']);
+Route::get('/attendance/{rapatId}', [AttendanceController::class, 'getAttendanceForRapat']);
 // Route::prefix('auth')->group(function () {
     
 // })

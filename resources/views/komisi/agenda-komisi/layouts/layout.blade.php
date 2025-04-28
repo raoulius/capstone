@@ -92,6 +92,10 @@
       Copyright © 2023 SENAT FH UNDIP. All Rights Reserved.
     </div>
   </body>
-  <script src="{{ asset("script7.js") }} "></script>
+  @push('scripts')
+    @if(!request()->routeIs('rapat.mulai'))
+        <script src="{{ asset('script7.js') }}"></script>
+    @endif
+  @endpush
 
 </html>
