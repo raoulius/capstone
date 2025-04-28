@@ -24,7 +24,10 @@
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
 </head>
 <link href="{{ asset('stylemulairapat.css') }}" rel="stylesheet">
+<!-- resources/views/komisi/agenda-komisi/mulairapat.blade.php -->
+@extends('komisi.agenda-komisi.layouts.layout')
 
+@section('content')
 <div class="container">
     <h2>Start Rapat</h2>
     <p><strong>Date:</strong> {{ $rapat->tanggal }}</p>

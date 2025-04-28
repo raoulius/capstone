@@ -44,6 +44,7 @@ use App\Http\Controllers\BadanAnggaranRapatUserController;
 use App\Http\Controllers\BadanKehormatanRapatUserController;
 use App\Http\Controllers\BadanLegislasiRapatUserController;
 use App\Http\Controllers\BKSAPRapatUserController;
+use App\Http\Controllers\FaceRecognitionController;
 
 use App\Models\AktivitasSenat;
 use App\Models\JDIH;
@@ -302,7 +303,20 @@ Route::group([
     Route::get('/rapat', [Komisi2RapatUserController::class, 'index'])->name('rapat.index');
 
     Route::get('/mulairapat/{id}', [Komisi2RapatUserController::class, 'mulaiRapat'])->name('rapat.mulai');
+
+    Route::get('/rapat', [Komisi2RapatUserController::class, 'index'])->name('komisi-ii.rapat.index');
+    Route::get('/rapat/create', [Komisi2RapatUserController::class, 'create'])->name('komisi-ii.rapat.create');
+    Route::post('/rapat', [Komisi2RapatUserController::class, 'store'])->name('komisi-ii.rapat.store');
+    Route::get('/rapat/{id}', [Komisi2RapatUserController::class, 'show'])->name('komisi-ii.rapat.show');
+    Route::get('/rapat/{id}/edit', [Komisi2RapatUserController::class, 'edit'])->name('komisi-ii.rapat.edit');
+    Route::put('/rapat/{id}', [Komisi2RapatUserController::class, 'update'])->name('komisi-ii.rapat.update');
+    Route::delete('/rapat/{id}', [Komisi2RapatUserController::class, 'destroy'])->name('komisi-ii.rapat.destroy');
+    
+    // Attendance Routes
+    Route::get('/rapat/{id}/mulai', [Komisi2RapatUserController::class, 'mulaiRapat'])->name('komisi-ii.rapat.mulai');
+    Route::post('/rapat/{id}/attendance', [Komisi2RapatUserController::class, 'processAttendance'])->name('komisi-ii.rapat.attendance');
 });
+
 // ======================== END KOMISi II==================================
 // ======================== KOMISI III==================================
 Route::group([
@@ -497,3 +511,8 @@ Route::group([
 
 // ======================== MAILING SYSTEM ==================================
 Route::get('/mailtest', [MailController::class, 'index']);
+
+Route::prefix('api')->group(function () {
+    Route::get('/encodings', [FaceRecognitionController::class, 'getEncodings'])->name('api.encodings');
+    Route::post('/recognize', [FaceRecognitionController::class, 'recognize'])->name('api.recognize');
+});
