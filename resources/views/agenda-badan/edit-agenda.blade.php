@@ -1,4 +1,5 @@
-@extends('agenda-badan.layouts.layout')
+{{-- @extends('agenda-badan.layouts.layout') --}}
+@extends('komisi.agenda-komisi.layouts.layout')
 
 @section('content')
 <link href="{{ asset("styleagenda.css") }}" rel="stylesheet">

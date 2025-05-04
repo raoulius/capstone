@@ -8,13 +8,17 @@ class BadanKehormatanRapatUserController extends Controller
 {
     public function index()
     {
-        $rapats = BadanKehormatanRapat::all();
-        return view('komisi.agenda-komisi.rapatbadankehormatan', compact('rapats'));
+        return view('komisi.agenda-komisi.rapat', [
+            'rapats' => BadanKehormatanRapat::all(),
+            'komisiRoute' => 'badan-kehormatan',
+            'komisiName' => 'Badan Kehormatan'
+        ]);
     }
 
     public function mulaiRapat($id)
     {
         $rapat = BadanKehormatanRapat::findOrFail($id);
-        return view('komisi.agenda-komisi.mulairapat', compact('rapat'));
+        $komisi_type = 'Badan Kehormatan';
+        return view('komisi.agenda-komisi.mulairapat', compact('rapat', 'komisi_type'));
     }
 }

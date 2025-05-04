@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\AttendanceRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AttendanceController extends Controller
 {
     public function store(Request $request)
     {
         $request->validate([
+            'user_id' => 'required',
             'rapat_id' => 'required|exists:master_rapat,id',
             'nama' => 'required|string',
             'email' => 'required|email',
@@ -17,7 +19,12 @@ class AttendanceController extends Controller
             'komisi_type' => 'required|string'
         ]);
 
-        $attendance = AttendanceRecord::create($request->all());
+        $data = $request->all();
+        $data['waktu_absen'] = \Carbon\Carbon::parse($request->waktu_absen)->format('Y-m-d H:i:s');
+
+        $attendance = AttendanceRecord::create($data);
+
+        Log::info('Attendance Store', ['attendance' => $request->all()]);
 
         return response()->json($attendance, 201);
     }
@@ -30,4 +37,4 @@ class AttendanceController extends Controller
 
         return response()->json($attendance);
     }
-} 
+}

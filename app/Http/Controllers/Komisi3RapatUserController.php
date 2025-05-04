@@ -8,13 +8,17 @@ class Komisi3RapatUserController extends Controller
 {
     public function index()
     {
-        $rapats = Komisi3Rapat::all();
-        return view('komisi.agenda-komisi.rapatkomisi3', compact('rapats'));
+        return view('komisi.agenda-komisi.rapat', [
+            'rapats' => Komisi3Rapat::all(),
+            'komisiRoute' => 'komisi-iii',
+            'komisiName' => 'Komisi III'
+        ]);
     }
 
     public function mulaiRapat($id)
     {
         $rapat = Komisi3Rapat::findOrFail($id);
-        return view('komisi.agenda-komisi.mulairapat', compact('rapat'));
+        $komisi_type = 'Komisi III';
+        return view('komisi.agenda-komisi.mulairapat', compact('rapat', 'komisi_type'));
     }
 }

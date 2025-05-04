@@ -11,13 +11,17 @@ different from Komisi1RapatController that is for the logic to create a new rapa
 {
     public function index()
     {
-        $rapats = BuatRapat::all();
-        return view('komisi.agenda-komisi.rapatkomisi1', compact('rapats'));
+        return view('komisi.agenda-komisi.rapat', [
+            'rapats' => BuatRapat::all(),
+            'komisiRoute' => 'komisi-i',
+            'komisiName' => 'Komisi I'
+        ]);
     }
 
     public function mulaiRapat($id)
     {
         $rapat = BuatRapat::findOrFail($id);
-        return view('komisi.agenda-komisi.mulairapat', compact('rapat'));
+        $komisi_type = 'Komisi I';
+        return view('komisi.agenda-komisi.mulairapat', compact('rapat', 'komisi_type'));
     }
 }

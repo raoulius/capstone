@@ -1,15 +1,14 @@
 @extends('komisi.agenda-komisi.layouts.layout')
-<link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+@push('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{{ asset("stylerapat.css") }}" rel="stylesheet">
+@endpush
 
 @section('content')
 <div class="container">
-    <h2>Badan Legislasi Rapat List</h2>
+    <h2>{{ $komisiName }} Rapat List</h2>
     <table class="table">
         <thead>
             <tr>
@@ -28,7 +27,7 @@
                 <td>{{ $rapat->nama }}</td>
                 <td>{{ $rapat->agenda }}</td>
                 <td>
-                    <a href="{{ route('badan-legislasi.rapat.mulai', $rapat->id) }}" class="btn btn-primary">Start Meeting</a>
+                    <a href="{{ route("{$komisiRoute}.rapat.mulai", $rapat->id) }}" class="btn btn-primary">Start Meeting</a>
                 </td>
             </tr>
             @endforeach

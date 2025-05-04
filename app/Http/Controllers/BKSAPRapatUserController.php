@@ -8,13 +8,17 @@ class BKSAPRapatUserController extends Controller
 {
     public function index()
     {
-        $rapats = BKSAPRapat::all();
-        return view('komisi.agenda-komisi.rapatbksap', compact('rapats'));
+        return view('komisi.agenda-komisi.rapatbksap', [
+            'rapats' => BKSAPRapat::all(),
+            'komisiRoute' => 'bksap',
+            'komisiName' => 'BKSAP'
+        ]);
     }
 
     public function mulaiRapat($id)
     {
         $rapat = BKSAPRapat::findOrFail($id);
-        return view('komisi.agenda-komisi.mulairapat', compact('rapat'));
+        $komisi_type = 'BKSAP';
+        return view('komisi.agenda-komisi.mulairapat', compact('rapat', 'komisi_type'));
     }
 }

@@ -8,13 +8,17 @@ class BadanAnggaranRapatUserController extends Controller
 {
     public function index()
     {
-        $rapats = BadanAnggaranRapat::all();
-        return view('komisi.agenda-komisi.rapatbadananggaran', compact('rapats'));
+        return view('komisi.agenda-komisi.rapat', [
+            'rapats' => BadanAnggaranRapat::all(),
+            'komisiRoute' => 'badan-anggaran',
+            'komisiName' => 'Badan Anggaran'
+        ]);
     }
 
     public function mulaiRapat($id)
     {
         $rapat = BadanAnggaranRapat::findOrFail($id);
-        return view('komisi.agenda-komisi.mulairapat', compact('rapat'));
+        $komisi_type = 'Badan Anggaran';
+        return view('komisi.agenda-komisi.mulairapat', compact('rapat', 'komisi_type'));
     }
 }

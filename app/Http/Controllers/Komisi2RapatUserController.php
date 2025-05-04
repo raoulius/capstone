@@ -20,14 +20,18 @@ class Komisi2RapatUserController extends Controller
 
     public function index()
     {
-        $rapats = Komisi2Rapat::all();
-        return view('komisi.agenda-komisi.rapatkomisi2', compact('rapats'));
+        return view('komisi.agenda-komisi.rapat', [
+            'rapats' => Komisi2Rapat::all(),
+            'komisiRoute' => 'komisi-ii',
+            'komisiName' => 'Komisi II'
+        ]);
     }
 
     public function mulaiRapat($id)
     {
         $rapat = Komisi2Rapat::findOrFail($id);
-        return view('komisi.agenda-komisi.mulairapat', compact('rapat'));
+        $komisi_type = 'Komisi II';
+        return view('komisi.agenda-komisi.mulairapat', compact('rapat', 'komisi_type'));
     }
 
     public function processAttendance(Request $request, $rapatId)

@@ -37,8 +37,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/attendance', [AttendanceController::class, 'store']);
-Route::get('/attendance/{rapatId}', [AttendanceController::class, 'getAttendanceForRapat']);
+Route::post('/attendance', [AttendanceController::class, 'store'])->name('attendance.record');
+Route::get('/attendance/{rapatId}', [AttendanceController::class, 'getAttendanceForRapat'])->middleware(['web', 'auth'])->name('attendance.get-detail');
 // Route::prefix('auth')->group(function () {
     
 // })

@@ -14,11 +14,17 @@ class AttendanceRecord extends Model
         'nama',
         'email',
         'waktu_absen',
-        'komisi_type'
+        'komisi_type',
+        'user_id'
     ];
 
     public function rapat()
     {
         return $this->belongsTo(MasterRapat::class, 'rapat_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 } 

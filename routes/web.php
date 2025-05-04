@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FaceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Password;
@@ -506,6 +507,12 @@ Route::group([
     Route::get('/list-revisi/{proposalId}', [SekjenController::class, 'listRevisi'])->name('proposal.revisi');
     Route::get('/revisi/create/{proposalId}', [SekjenController::class, 'viewCreateRevisi'])->name('revisi.create');
     Route::post('/revisi/store/{proposalId}', [SekjenController::class, 'createRevisi'])->name('revisi.store');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/face', [FaceController::class, 'index'])->name('face.index');
+    Route::post('/face', [FaceController::class, 'store'])->name('face.store');
+    Route::delete('/face/{faceId}', [FaceController::class, 'destroy'])->name('face.destroy');
 });
 // ======================== END PIMPINAN TINGGI ==================================
 
