@@ -15,7 +15,8 @@ class AttendanceRecord extends Model
         'email',
         'waktu_absen',
         'komisi_type',
-        'user_id'
+        'user_id',
+        'member_id'
     ];
 
     public function rapat()
@@ -26,5 +27,9 @@ class AttendanceRecord extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function member() {
+        return $this->belongsTo(Member::class);
     }
 } 

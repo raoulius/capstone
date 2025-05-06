@@ -83,9 +83,9 @@
 
 @push('scripts')
 <script>
-    
     let attendanceRecords = [];
     async function refreshAttendance () {
+        document.getElementById('attendanceRecords').innerHTML = ''
         try {
             const response = await fetch('{{ route("attendance.get-detail", $rapat->id)}}', {
                 method: 'GET',
@@ -179,11 +179,14 @@
                     .withFaceExpressions();
 
                 if (detections.length > 0) {
-                    const descriptors = {!! json_encode(auth()->user()->userFace->pluck('descriptor')->map(function ($item) {
-                        return json_decode($item); // ubah string JSON ke array
+                    const descriptors = {!! json_encode(auth()->user()->load('userFace.member')->userFace->map(function ($face) {
+                        return [
+                            'descriptor' => json_decode($face->descriptor),
+                            'member_id' => $face->member->id,
+                        ];
                     })->toArray()) !!}
 
-                    const attendanceData = {
+                    let attendanceData = {
                         user_id: {{auth()->user()->id}},
                         rapat_id: {{ $rapat->id }},
                         nama: '{{ $rapat->nama }}',
@@ -194,9 +197,13 @@
 
                     let results = 1;
                     descriptors.forEach(descriptor => {
-                        const tempResult = faceapi.euclideanDistance(detections[0].descriptor, descriptor)
+                        const tempResult = faceapi.euclideanDistance(detections[0].descriptor, descriptor.descriptor)
                         console.log(tempResult)
-                        results = tempResult < results ? tempResult : results
+
+                        if (tempResult < results) {
+                            results = tempResult
+                            attendanceData.member_id = descriptor.member_id
+                        }
                     });
 
                     if (results > 0.5) {

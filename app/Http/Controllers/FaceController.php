@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\UserFace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,9 +22,34 @@ class FaceController extends Controller
             return redirect(-1);
 
         $request->validate([
+            'nim' => 'required',
+            'name' => 'nullable',
+            'email' => 'nullable',
             'descriptor' => 'required',
             'image' => 'required'
         ]);
+
+        $member = Member::where('nim', $request->nim)
+            ->first();
+
+        if (!$member) {
+            $member = new Member;
+
+            $member->nim = $request->nim;
+            $member->name = $request->name;
+            $member->email = $request->email;
+            $member->role_id = auth()->user()->role_id;
+            
+            $member->save();
+        }
+            
+        
+        if ($member->name != $request->name || $member->email != $request->email) {
+            $member->name = $request->name ?? $member->name;
+            $member->email = $request->email ?? $member->email;
+
+            $member->save();
+        }
 
         $descriptor = $request->input('descriptor');
         $base64Image = $request->input('image');
@@ -35,6 +61,7 @@ class FaceController extends Controller
 
         $newFace = new UserFace;
         $newFace->user_id = auth()->user()->id;
+        $newFace->member_id = $member->id;
         $newFace->descriptor = json_encode($descriptor);
         $newFace->path = "faces/$imageName";
 

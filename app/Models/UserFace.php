@@ -15,4 +15,8 @@ class UserFace extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    public function member()
+    {
+        return $this->belongsTo(Member::class, 'member_id', 'id');
+    }
 }

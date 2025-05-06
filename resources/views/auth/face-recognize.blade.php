@@ -1,6 +1,49 @@
 @extends('komisi.agenda-komisi.layouts.layout')
 @push('styles')
 <link rel="stylesheet" href="{{ asset('styleface.css') }}">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+    .student-form {
+        max-width: 500px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    .student-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .student-form .form-group {
+        margin-bottom: 15px;
+    }
+
+    .student-form input,
+    .student-form select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .student-form input:focus,
+    .student-form select:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    #studentDetails {
+        margin-top: 20px;
+    }
+</style>
+
 @endpush
 
 @section('content')
@@ -12,6 +55,24 @@
         </div>
         <div class="video-container">
             <video id="video" width="720" height="560" autoplay muted style="display: none;"></video>
+        </div>
+        <div class="student-form">
+            <label for="studentSelect">Mahasiswa</label>
+            <select id="studentSelect" style="width: 100%;" class="form-control"></select>
+            <div id="studentDetails" class="mt-3" style="">
+                <div class="form-group">
+                    <label for="nim">NIM</label>
+                    <input type="text" id="nim" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="name">Nama</label>
+                    <input type="text" id="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control">
+                </div>
+            </div>
         </div>
         <div class="controls">
             <button id="startButton" class="btn">Start Camera</button>
@@ -30,7 +91,38 @@
 @endsection
 
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#studentSelect').select2({
+            placeholder: 'Cari Mahasiswa...',
+            ajax: {
+                url: '{{ route("members.index", auth()->user()->role->id) }}',
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: data.map(student => ({
+                            id: student.id,
+                            text: `${student.nim} - ${student.name}`,
+                            student
+                        }))
+                    };
+                },
+                cache: true
+            }
+        });
+    
+        $('#studentSelect').on('select2:select', function (e) {
+            const selected = e.params.data.student;
+            $('#studentDetails').show();
+            $('#nim').val(selected.nim);
+            $('#name').val(selected.name);
+            $('#email').val(selected.email);
+        });
+    });
+</script>
 <script>
     let faceData = {!! auth()->user()->userFace->makeHidden('descriptor') !!}
 
@@ -167,6 +259,9 @@ function imageToBase64(image) {
                 if (detections.length > 0) {
                     const snapshot = getSnapshotFromVideo(video);
                     const attendanceData = {
+                        name: $('#name').val(),
+                        nim: $('#nim').val(),
+                        email: $('#email').val(),
                         descriptor: Object.values(detections[0].descriptor),
                         image: snapshot // base64 encoded image string
                     };
@@ -221,7 +316,10 @@ function imageToBase64(image) {
             const base64 = await imageToBase64(img);
             const attendanceData = {
                 descriptor: Object.values(detections[0].descriptor),
-                image: base64
+                image: base64,
+                name: $('#name').val(),
+                nim: $('#nim').val(),
+                email: $('#email').val(),
             };
 
             try {

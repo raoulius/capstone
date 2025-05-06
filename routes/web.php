@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FaceController;
+use App\Http\Controllers\MemberController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Password;
@@ -513,6 +514,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/face', [FaceController::class, 'index'])->name('face.index');
     Route::post('/face', [FaceController::class, 'store'])->name('face.store');
     Route::delete('/face/{faceId}', [FaceController::class, 'destroy'])->name('face.destroy');
+
+    Route::get('/members/{roleId}', [MemberController::class, 'index'])->name('members.index');
 });
 // ======================== END PIMPINAN TINGGI ==================================
 
