@@ -4,11 +4,13 @@
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="{{ asset("stylerapat.css") }}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
 @endpush
 
 @section('content')
+<h2 class="header">{{ $komisiName }} RAPAT LIST</h2>
 <div class="container">
-    <h2>{{ $komisiName }} Rapat List</h2>
     <table class="table">
         <thead>
             <tr>
@@ -27,7 +29,7 @@
                 <td>{{ $rapat->nama }}</td>
                 <td>{{ $rapat->agenda }}</td>
                 <td>
-                    <a href="{{ route("{$komisiRoute}.rapat.mulai", $rapat->id) }}" class="btn btn-primary">Start Meeting</a>
+                    <a href="{{ route("{$komisiRoute}.rapat.mulai", $rapat->id) }}" class="btn1 btn-primary">Start Meeting</a>
                 </td>
             </tr>
             @endforeach
