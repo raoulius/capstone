@@ -5,60 +5,33 @@
 @endpush
 @push('styles')
 <link href="{{ asset('stylemulairapat.css') }}" rel="stylesheet">
-<style>
-    .attendance-section {
-        margin-top: 2rem;
-        padding: 1rem;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .video-container {
-        margin: 1rem 0;
-        text-align: center;
-    }
-
-    .controls {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin: 1rem 0;
-    }
-
-    .attendance-list {
-        margin-top: 2rem;
-    }
-
-    .attendance-list ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .attendance-list li {
-        padding: 0.5rem;
-        border-bottom: 1px solid #eee;
-    }
-
-    .error-message {
-        background-color: #ffebee;
-        color: #c62828;
-        padding: 1rem;
-        border-radius: 4px;
-        margin: 1rem 0;
-        text-align: center;
-    }
-</style>
 @endpush
 <!-- resources/views/komisi/agenda-komisi/mulairapat.blade.php -->
 
 @section('content')
+<h2 class="section-title">START RAPAT</h2>
 <div class="container">
-    <h2>Start Rapat</h2>
-    <p><strong>Date:</strong> {{ $rapat->tanggal }}</p>
-    <p><strong>Time:</strong> {{ $rapat->waktu_mulai }} - {{ $rapat->waktu_selesai }}</p>
-    <p><strong>Title:</strong> {{ $rapat->nama }}</p>
-    <p><strong>Agenda:</strong> {{ $rapat->agenda }}</p>
+    
+
+<div class="rapat-info">
+    <div class="info-item">
+        <span class="label">Date:</span>
+        <span class="value">{{ $rapat->tanggal }}</span>
+    </div>
+    <div class="info-item">
+        <span class="label">Time:</span>
+        <span class="value">{{ $rapat->waktu_mulai }} - {{ $rapat->waktu_selesai }}</span>
+    </div>
+    <div class="info-item">
+        <span class="label">Title:</span>
+        <span class="value">{{ $rapat->nama }}</span>
+    </div>
+    <div class="info-item">
+        <span class="label">Agenda:</span>
+        <span class="value">{{ $rapat->agenda }}</span>
+    </div>
+</div>
+
 
     <div class="attendance-section">
         <h3>Attendance Tracking</h3>
@@ -69,12 +42,12 @@
             <video id="video" width="720" height="560" autoplay muted></video>
         </div>
         <div class="controls">
-            <button id="startButton" class="btn">Start Camera</button>
-            <button id="captureButton" class="btn" style="display: none;">Capture Face</button>
+            <button id="startButton" class="btn1">Start Camera</button>
+            <button id="captureButton" class="btn1" style="display: none;">Capture Face</button>
         </div>
         <div id="attendanceList" class="attendance-list">
             <h4>Attendance List</h4>
-            <button id="refresh" class="btn" onclick="refreshAttendance()">Refresh</button>
+            <button id="refresh" class="btn1" onclick="refreshAttendance()">Refresh</button>
             <ul id="attendanceRecords"></ul>
         </div>
     </div>

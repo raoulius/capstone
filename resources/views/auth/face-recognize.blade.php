@@ -4,9 +4,10 @@
 @endpush
 
 @section('content')
+<h3 class="h3">FACE RECOGNITION</h3>
 <div class="container">
     <div class="attendance-section">
-        <h3>Face Recogniton</h3>
+        
         <div id="webgl-error" class="error-message" style="display: none;">
             <p>WebGL is not supported on your device. Please try using a different browser or device.</p>
         </div>
@@ -22,7 +23,7 @@
             <input type="file" id="imageUpload" accept="image/*" style="display: none;">
         </div>
         <div id="faceList" class="attendance-list">
-            <h4>Face List</h4>
+            <h4 class="h4">FACE LIST</h4>
             <ul id="attendanceRecords" class="grid-container"></ul>
         </div>
     </div>
